@@ -1,4 +1,4 @@
 EngineA
 =======
 
-A genetic algorithm
+A tool to find solutions to problems, given a fitness function.
