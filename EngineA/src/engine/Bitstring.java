@@ -28,6 +28,10 @@ public class Bitstring {
         }
     }
 
+    public Bitstring(boolean[] bits) {
+        this.bits = bits;
+    }
+
     public boolean[] getBits() {
         return bits;
     }

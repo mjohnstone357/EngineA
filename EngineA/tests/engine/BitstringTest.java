@@ -10,7 +10,7 @@ import static org.junit.Assert.assertFalse;
  *         Date: 27/07/13
  *         Time: 12:38
  */
-public class BitstringTests {
+public class BitstringTest {
 
     @Test
     public void constructor_should_parse_bit_string_correctly() {
