@@ -31,7 +31,7 @@ public class ModelGenerator {
 
     public Model createRandomModel() {
 
-        if (!compositeModelGenerator.canCreateModel() || random.nextBoolean()) {
+        if (!compositeModelGenerator.canCreateModel() || random.nextInt(10) > 0) {
             return bitModelGenerator.generateRandomBitModel();
         } else {
             return compositeModelGenerator.generateRandomCompositeModel();

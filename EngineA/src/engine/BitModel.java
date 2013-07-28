@@ -28,4 +28,12 @@ public class BitModel extends AbstractModel implements Model {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "BitModel{" +
+                "index=" + index +
+                ", fitnessPrediction=" + fitnessPrediction +
+                '}';
+    }
 }

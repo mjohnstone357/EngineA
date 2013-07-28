@@ -9,6 +9,6 @@ public class Constants {
 
     public static final int MAX_WEIGHTING = 100;
 
-    public static final int DEFAULT_CREDITS = 100;
+    public static final int DEFAULT_CREDITS = 20;
 
 }

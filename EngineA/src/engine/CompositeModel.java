@@ -50,4 +50,12 @@ public class CompositeModel extends AbstractModel implements Model {
 
         return (int)fitness;
     }
+
+    @Override
+    public String toString() {
+        return "CompositeModel{" +
+                "models=" + models +
+                ", weightings=" + weightings +
+                '}';
+    }
 }
