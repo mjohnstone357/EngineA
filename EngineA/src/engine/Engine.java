@@ -33,6 +33,7 @@ public class Engine {
     }
 
     public static void main(String[] args) {
+
         Engine engine = new Engine();
 
         Bitstring opt = new Bitstring(8, "11000111");
