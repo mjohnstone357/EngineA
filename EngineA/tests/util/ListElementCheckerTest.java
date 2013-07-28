@@ -38,6 +38,39 @@ public class ListElementCheckerTest {
     }
 
     @Test
+    public void should_indicate_no_elements_are_are_zero() {
+
+        List<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+
+        assertTrue(ListElementChecker.allNumbersNonNullAndNonZero(integers));
+    }
+    @Test
+
+    public void should_indicate_an_element_is_zero() {
+
+        List<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(0);
+        integers.add(3);
+
+        assertFalse(ListElementChecker.allNumbersNonNullAndNonZero(integers));
+    }
+
+    @Test
+    public void should_indicate_an_element_is_null() {
+
+        List<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(null);
+
+        assertFalse(ListElementChecker.allNumbersNonNullAndNonZero(integers));
+    }
+
+    @Test
     public void should_indicate_no_elements_are_there_are_three_elements_and_one_is_null() {
 
         List<Integer> integers = new ArrayList<>();

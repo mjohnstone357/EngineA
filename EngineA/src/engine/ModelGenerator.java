@@ -11,19 +11,22 @@ import java.util.Random;
 public class ModelGenerator {
 
     private final Random random;
-    private final int stringLength;
-    private final List<Model> existingModels;
 
     private final BitModelGenerator bitModelGenerator;
     private final CompositeModelGenerator compositeModelGenerator;
 
     public ModelGenerator(Random random, int stringLength, List<Model> existingModels) {
         this.random = random;
-        this.stringLength = stringLength;
-        this.existingModels = existingModels;
+        this.bitModelGenerator = getBitModelGenerator(random, stringLength);
+        this.compositeModelGenerator = getCompositeModelGenerator(random, stringLength, existingModels);
+    }
 
-        this.bitModelGenerator = new BitModelGenerator(random, stringLength);
-        this.compositeModelGenerator = new CompositeModelGenerator(random, stringLength, existingModels);
+    protected CompositeModelGenerator getCompositeModelGenerator(Random random, int stringLength, List<Model> existingModels) {
+        return new CompositeModelGenerator(random, stringLength, existingModels);
+    }
+
+    protected BitModelGenerator getBitModelGenerator(Random random, int stringLength) {
+        return new BitModelGenerator(random, stringLength);
     }
 
     public Model createRandomModel() {
