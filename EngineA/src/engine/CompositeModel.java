@@ -10,12 +10,14 @@ import static util.ListElementChecker.allNumbersNonNullAndNonZero;
  *         Date: 27/07/13
  *         Time: 15:08
  */
-public class CompositeModel implements Model {
+public class CompositeModel extends AbstractModel implements Model {
 
     private final List<Model> models;
     private final List<Integer> weightings;
 
     public CompositeModel(List<Model> models, List<Integer> weightings) {
+
+        super();
 
         assert models.size() == weightings.size();
         assert models.size() > 0;

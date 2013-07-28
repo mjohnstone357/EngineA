@@ -5,12 +5,13 @@ package engine;
  *         Date: 27/07/13
  *         Time: 14:58
  */
-public class BitModel implements Model {
+public class BitModel extends AbstractModel implements Model {
 
     private final int index;
     private final int fitnessPrediction;
 
     public BitModel(int index, int fitnessPrediction) {
+        super();
         this.index = index;
         this.fitnessPrediction = fitnessPrediction;
     }

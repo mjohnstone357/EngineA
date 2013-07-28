@@ -16,4 +16,10 @@ public interface Model {
      */
     public int getPredictedFitness(Bitstring bits);
 
+    public int getCredits();
+
+    public int addCredits(int credits);
+
+    public int subtractCredits(int credits);
+
 }
