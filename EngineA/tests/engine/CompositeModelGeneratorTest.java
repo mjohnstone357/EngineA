@@ -2,9 +2,9 @@ package engine;
 
 import org.junit.Test;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -21,7 +21,7 @@ public class CompositeModelGeneratorTest {
     public void should_indicate_that_composite_creation_is_not_possible_without_existing_models() {
 
         final Random random = new Random();
-        final Set<Model> existingModels = new HashSet<>();
+        final List<Model> existingModels = new ArrayList<>();
 
         CompositeModelGenerator compositeModelGenerator = new CompositeModelGenerator(random, 8, existingModels);
 
@@ -32,7 +32,7 @@ public class CompositeModelGeneratorTest {
     public void should_create_a_composite_model_using_sole_bit_model() {
 
         final Random random = new Random();
-        final Set<Model> existingModels = new HashSet<>();
+        final List<Model> existingModels = new ArrayList<>();
 
         existingModels.add(new BitModel(0, 1000));
 
@@ -49,7 +49,7 @@ public class CompositeModelGeneratorTest {
     public void should_create_a_composite_model_from_two_bit_models() {
 
         final Random random = new Random(0);
-        final Set<Model> existingModels = new HashSet<>();
+        final List<Model> existingModels = new ArrayList<>();
 
         existingModels.add(new BitModel(0, 1000));
         existingModels.add(new BitModel(0, 2000));
@@ -70,7 +70,7 @@ public class CompositeModelGeneratorTest {
     public void should_create_a_composite_model_from_one_of_two_bit_models() {
 
         final Random random = new Random(25641);
-        final Set<Model> existingModels = new HashSet<>();
+        final List<Model> existingModels = new ArrayList<>();
 
         existingModels.add(new BitModel(0, 1000));
         existingModels.add(new BitModel(0, 2000));

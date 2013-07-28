@@ -3,7 +3,6 @@ package engine;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * @author Matthew Johnstone
@@ -13,10 +12,10 @@ import java.util.Set;
 public class CompositeModelGenerator {
 
     private final Random random;
-    private final Set<Model> existingModels;
+    private final List<Model> existingModels;
     private final BitModelGenerator bitModelGenerator;
 
-    public CompositeModelGenerator(Random random, int stringLength, Set<Model> existingModels) {
+    public CompositeModelGenerator(Random random, int stringLength, List<Model> existingModels) {
         this.random = random;
         this.existingModels = existingModels;
         bitModelGenerator = new BitModelGenerator(random, stringLength);

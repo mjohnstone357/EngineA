@@ -1,8 +1,8 @@
 package engine;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * @author Matthew Johnstone
@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class Engine {
 
-    private Set<Model> models;
+    private List<Model> models;
     private Random random;
     private BitstringGenerator bitstringGenerator;
     private ModelGenerator modelGenerator;
@@ -20,7 +20,7 @@ public class Engine {
 
     public Engine() {
 
-        models = new HashSet<>();
+        models = new ArrayList<>();
         random = new Random();
         bitstringGenerator = new BitstringGenerator(random, 8);
         modelGenerator = new ModelGenerator(random, 8, models);
@@ -71,7 +71,7 @@ public class Engine {
         System.out.println();
     }
 
-    public Set<Model> getModels() {
+    public List<Model> getModels() {
         return models;
     }
 

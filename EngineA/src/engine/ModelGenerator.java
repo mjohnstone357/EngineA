@@ -1,7 +1,7 @@
 package engine;
 
+import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * @author Matthew Johnstone
@@ -12,12 +12,12 @@ public class ModelGenerator {
 
     private final Random random;
     private final int stringLength;
-    private final Set<Model> existingModels;
+    private final List<Model> existingModels;
 
     private final BitModelGenerator bitModelGenerator;
     private final CompositeModelGenerator compositeModelGenerator;
 
-    public ModelGenerator(Random random, int stringLength, Set<Model> existingModels) {
+    public ModelGenerator(Random random, int stringLength, List<Model> existingModels) {
         this.random = random;
         this.stringLength = stringLength;
         this.existingModels = existingModels;
