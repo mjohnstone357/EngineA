@@ -5,12 +5,13 @@ import org.junit.Test;
 
 import java.util.Random;
 
+import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
 import static org.junit.Assert.assertEquals;
 
 /**
  * Kinda testing the wrong thing here, but it'll do for now.
- *
- * TODO Fix scope of these tests. Maybe set up a mocking framework. Or anonymous subclassing?
  *
  * @author Matthew Johnstone
  *         Date: 27/07/13
@@ -26,35 +27,32 @@ public class BitModelGeneratorTest {
     }
 
     @Test
-    public void should_generate_bit_model_1() {
-        bitModelGenerator = new BitModelGenerator(new Random(0), 8);
-        BitModel bitModel = bitModelGenerator.generateRandomBitModel(); // index: 5, fitness -48
+    public void should_generate_bit_model() {
 
-        assertEquals(-48, bitModel.getPredictedFitness(new Bitstring(8, "00000100")));
+        Random mockRandom = createMock(Random.class);
+        expect(mockRandom.nextInt(8)).andReturn(5); // Getting the bit index
+        expect(mockRandom.nextInt(99)).andReturn(43); // Getting the weighting
+        expect(mockRandom.nextBoolean()).andReturn(true); // Should use the weighting? (as opposed to negating)
+        replay(mockRandom);
+
+        bitModelGenerator = new BitModelGenerator(mockRandom, 8);
+        BitModel bitModel = bitModelGenerator.generateRandomBitModel();
+
+        assertEquals(44, bitModel.getPredictedFitness(new Bitstring(8, "00000100")));
     }
 
     @Test
-    public void should_generate_bit_model_2() {
-        bitModelGenerator = new BitModelGenerator(new Random(0), 8);
-        BitModel bitModel = bitModelGenerator.generateRandomBitModel(); // index: 5, fitness -48
+    public void should_generate_bit_model_negated() {
 
-        assertEquals(48, bitModel.getPredictedFitness(new Bitstring(8, "00000000")));
+        Random mockRandom = createMock(Random.class);
+        expect(mockRandom.nextInt(8)).andReturn(5); // Getting the bit index
+        expect(mockRandom.nextInt(99)).andReturn(43); // Getting the weighting
+        expect(mockRandom.nextBoolean()).andReturn(false); // Should use the weighting? (as opposed to negating)
+        replay(mockRandom);
+
+        bitModelGenerator = new BitModelGenerator(mockRandom, 8);
+        BitModel bitModel = bitModelGenerator.generateRandomBitModel();
+
+        assertEquals(-44, bitModel.getPredictedFitness(new Bitstring(8, "00000100")));
     }
-
-    @Test
-    public void should_generate_bit_model_3() {
-        bitModelGenerator = new BitModelGenerator(new Random(1120565721), 8);
-        BitModel bitModel = bitModelGenerator.generateRandomBitModel(); // index: 4, fitness 77
-
-        assertEquals(77, bitModel.getPredictedFitness(new Bitstring(8, "00001000")));
-    }
-
-    @Test
-    public void should_generate_bit_model_4() {
-        bitModelGenerator = new BitModelGenerator(new Random(1120565721), 8);
-        BitModel bitModel = bitModelGenerator.generateRandomBitModel(); // index: 4, fitness 77
-
-        assertEquals(-77, bitModel.getPredictedFitness(new Bitstring(8, "0000000")));
-    }
-
 }
