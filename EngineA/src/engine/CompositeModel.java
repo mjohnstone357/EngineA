@@ -3,7 +3,7 @@ package engine;
 import java.util.List;
 
 import static util.ListElementChecker.allElementsNonNull;
-import static util.ListElementChecker.allNumbersNonNullAndNonZero;
+import static util.ListElementChecker.allNumbersNonNullAndPositive;
 
 /**
  * @author Matthew Johnstone
@@ -24,7 +24,7 @@ public class CompositeModel extends AbstractModel implements Model {
 
         assert allElementsNonNull(models);
         assert allElementsNonNull(weightings);
-        assert allNumbersNonNullAndNonZero(weightings);
+        assert allNumbersNonNullAndPositive(weightings);
 
         this.models = models;
         this.weightings = weightings;

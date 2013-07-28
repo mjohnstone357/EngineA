@@ -18,9 +18,9 @@ public class ListElementChecker {
         return true;
     }
 
-    public static boolean allNumbersNonNullAndNonZero(List<Integer> xs) {
+    public static boolean allNumbersNonNullAndPositive(List<Integer> xs) {
         for (Integer x : xs) {
-            if (x == null || x == 0) {
+            if (x == null || x <= 0) {
                 return false;
             }
         }

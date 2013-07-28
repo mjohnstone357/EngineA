@@ -29,13 +29,6 @@ public class BitModelGenerator {
     }
 
     public int getRandomWeighting() {
-
-        int weighting = 1 + random.nextInt(Constants.MAX_WEIGHTING - 1);
-
-        if (random.nextBoolean()) {
-            return weighting;
-        } else {
-            return -weighting;
-        }
+        return 1 + random.nextInt(Constants.MAX_WEIGHTING - 1);
     }
 }
