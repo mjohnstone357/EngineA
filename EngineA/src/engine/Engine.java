@@ -12,7 +12,6 @@ import java.util.Random;
 public class Engine {
 
     private List<Model> models;
-    private Random random;
     private BitstringGenerator bitstringGenerator;
     private ModelGenerator modelGenerator;
 
@@ -21,7 +20,7 @@ public class Engine {
     public Engine() {
 
         models = new ArrayList<>();
-        random = new Random();
+        Random random = new Random();
         bitstringGenerator = new BitstringGenerator(random, 8);
         modelGenerator = new ModelGenerator(random, 8, models);
 
