@@ -21,7 +21,7 @@ public class CompositeModelGenerator {
         bitModelGenerator = new BitModelGenerator(random, stringLength);
     }
 
-    public CompositeModel generateRandomCompositeModel() {
+    public CompositeModel generateRandomCompositeModel(int modelID) {
 
         final int numberOfModels = existingModels.size();
 
@@ -43,7 +43,7 @@ public class CompositeModelGenerator {
             weightings.add(bitModelGenerator.getRandomWeighting());
         }
 
-        return new CompositeModel(modelsToUse, weightings);
+        return new CompositeModel(modelsToUse, weightings, modelID);
 
     }
 

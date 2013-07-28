@@ -33,7 +33,7 @@ public class BitModelGeneratorTest {
         replay(mockRandom);
 
         bitModelGenerator = new BitModelGenerator(mockRandom, 8);
-        BitModel bitModel = bitModelGenerator.generateRandomBitModel();
+        BitModel bitModel = bitModelGenerator.generateRandomBitModel(0);
 
         assertEquals(44, bitModel.getPredictedFitness(new Bitstring(8, "00000100")));
         verify(mockRandom);

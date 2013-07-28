@@ -19,6 +19,11 @@ public class AbstractModelTest {
             public int getPredictedFitness(Bitstring bits) {
                 return 0;
             }
+
+            @Override
+            public int getID() {
+                return 0;  //To change body of implemented methods use File | Settings | File Templates.
+            }
         };
         assertCreditOperations(bitModel);
     }

@@ -53,9 +53,9 @@ public class Engine {
 
         int actualFitness = problem.fitness(randomBitstring);
 
-//        System.out.println("=== Generation: " + generation + " =====================");
+        System.out.println("=== Generation: " + generation + " =====================");
 
-//        System.out.println("Actual fitness of current string: " + actualFitness);
+        System.out.println("String fitness: " + actualFitness);
 
         int totalCreditsAwarded = 0;
 
@@ -63,8 +63,12 @@ public class Engine {
             int predictedFitness = model.getPredictedFitness(randomBitstring);
             int delta = Math.abs(actualFitness - predictedFitness);
             int creditReward = 200 - delta;
+
+            if (creditReward < 0) creditReward = 0;
+
             model.addCredits(creditReward);
-//            System.out.println("Model puts fitness at: " + predictedFitness + ". Delta is " + delta + ". Credit reward is " + creditReward + ". Model: " + model);
+            System.out.println("Model[" + model.getID()+"] puts fitness at: " + predictedFitness + ". Error=" + delta + ". Credit reward=" + creditReward +
+                    ". Correctness=" + modelCorrectness(model) + ". Model: " + model);
             totalCreditsAwarded += creditReward;
         }
 
@@ -90,15 +94,19 @@ public class Engine {
             models.remove(model);
         }
 
-//        System.out.println("Absolute info");
+//        printAbsoluteInfo();
+
+        System.out.println("=======================================");
+
+        generation++;
+    }
+
+    private void printAbsoluteInfo() {
+        System.out.println("Absolute info");
         for (Model model : models) {
             System.out.print(modelCorrectness(model) + " ");
         }
         System.out.println();
-
-//        System.out.println("=======================================");
-
-        generation++;
     }
 
     public static void main(String[] args) {
@@ -107,7 +115,7 @@ public class Engine {
 
 //        engine.models.add(new BitModel())
 
-        for (int i = 0; i < 250; i++) {
+        for (int i = 0; i < 100; i++) {
             engine.step();
         }
 

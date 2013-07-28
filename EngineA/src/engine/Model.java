@@ -22,4 +22,6 @@ public interface Model {
 
     public int subtractCredits(int credits);
 
+    public int getID();
+
 }

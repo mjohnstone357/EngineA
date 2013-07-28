@@ -15,10 +15,13 @@ public class ModelGenerator {
     private final BitModelGenerator bitModelGenerator;
     private final CompositeModelGenerator compositeModelGenerator;
 
+    private int modelID = 0;
+
     public ModelGenerator(Random random, int stringLength, List<Model> existingModels) {
         this.random = random;
         this.bitModelGenerator = getBitModelGenerator(random, stringLength);
         this.compositeModelGenerator = getCompositeModelGenerator(random, stringLength, existingModels);
+        this.modelID = 0;
     }
 
     protected CompositeModelGenerator getCompositeModelGenerator(Random random, int stringLength, List<Model> existingModels) {
@@ -31,10 +34,12 @@ public class ModelGenerator {
 
     public Model createRandomModel() {
 
-        if (!compositeModelGenerator.canCreateModel() || random.nextInt(10) > 0) {
-            return bitModelGenerator.generateRandomBitModel();
+        modelID++;
+
+        if (!compositeModelGenerator.canCreateModel() || random.nextInt(5) > 0) {
+            return bitModelGenerator.generateRandomBitModel(modelID);
         } else {
-            return compositeModelGenerator.generateRandomCompositeModel();
+            return compositeModelGenerator.generateRandomCompositeModel(modelID);
         }
 
     }

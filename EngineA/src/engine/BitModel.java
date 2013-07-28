@@ -10,10 +10,13 @@ public class BitModel extends AbstractModel implements Model {
     private final int index;
     private final int fitnessPrediction;
 
-    public BitModel(int index, int fitnessPrediction) {
+    private int modelID;
+
+    public BitModel(int index, int fitnessPrediction, int modelID) {
         super();
         this.index = index;
         this.fitnessPrediction = fitnessPrediction;
+        this.modelID = modelID;
     }
 
     @Override
@@ -27,6 +30,11 @@ public class BitModel extends AbstractModel implements Model {
             return -fitnessPrediction;
         }
 
+    }
+
+    @Override
+    public int getID() {
+        return modelID;
     }
 
     @Override

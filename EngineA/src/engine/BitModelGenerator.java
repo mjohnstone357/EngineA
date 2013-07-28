@@ -19,12 +19,12 @@ public class BitModelGenerator {
         this.stringLength = stringLength;
     }
 
-    public BitModel generateRandomBitModel() {
+    public BitModel generateRandomBitModel(int modelID) {
 
         final int index = random.nextInt(stringLength);
         final int weighting = getRandomWeighting();
 
-        return new BitModel(index, weighting);
+        return new BitModel(index, weighting, modelID);
 
     }
 

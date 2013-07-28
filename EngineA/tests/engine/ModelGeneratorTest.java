@@ -39,7 +39,7 @@ public class ModelGeneratorTest {
             @Override
             protected BitModelGenerator getBitModelGenerator(Random random, int stringLength) {
                 BitModelGenerator bitModelGenerator = createMock(BitModelGenerator.class);
-                expect(bitModelGenerator.generateRandomBitModel()).andReturn(bitModel).once();
+                expect(bitModelGenerator.generateRandomBitModel(1)).andReturn(bitModel).once();
                 replay(bitModelGenerator);
                 return bitModelGenerator;
             }
@@ -55,7 +55,7 @@ public class ModelGeneratorTest {
     public void should_create_a_bit_model_when_composite_models_are_available_but_random_bool_is_true() {
 
         Random mockRandom = createMock(Random.class);
-        expect(mockRandom.nextBoolean()).andReturn(true);
+        expect(mockRandom.nextInt(5)).andReturn(3);
         replay(mockRandom);
 
         List<Model> existingModels = new ArrayList<>();
@@ -75,7 +75,7 @@ public class ModelGeneratorTest {
             @Override
             protected BitModelGenerator getBitModelGenerator(Random random, int stringLength) {
                 BitModelGenerator bitModelGenerator = createMock(BitModelGenerator.class);
-                expect(bitModelGenerator.generateRandomBitModel()).andReturn(bitModel).once();
+                expect(bitModelGenerator.generateRandomBitModel(1)).andReturn(bitModel).once();
                 replay(bitModelGenerator);
                 return bitModelGenerator;
             }
@@ -91,7 +91,7 @@ public class ModelGeneratorTest {
     public void should_create_a_composite_model_when_composite_models_are_available_and_random_bool_is_false() {
 
         Random mockRandom = createMock(Random.class);
-        expect(mockRandom.nextBoolean()).andReturn(false);
+        expect(mockRandom.nextInt(5)).andReturn(0);
         replay(mockRandom);
 
         List<Model> existingModels = new ArrayList<>();
@@ -104,7 +104,7 @@ public class ModelGeneratorTest {
             protected CompositeModelGenerator getCompositeModelGenerator(Random random, int stringLength, List<Model> existingModels) {
                 CompositeModelGenerator compositeModelGenerator = createMock(CompositeModelGenerator.class);
                 expect(compositeModelGenerator.canCreateModel()).andReturn(true).once();
-                expect(compositeModelGenerator.generateRandomCompositeModel()).andReturn(compositeModel).once();
+                expect(compositeModelGenerator.generateRandomCompositeModel(1)).andReturn(compositeModel).once();
                 replay(compositeModelGenerator);
                 return compositeModelGenerator;
             }

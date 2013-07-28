@@ -15,7 +15,7 @@ public class BitModelTest {
     public void should_give_correct_fitness_prediction() {
 
         Bitstring bitstring = new Bitstring(8, "10000000");
-        BitModel bitModel = new BitModel(0, 1000);
+        BitModel bitModel = new BitModel(0, 1000, 0);
 
         assertEquals(1000, bitModel.getPredictedFitness(bitstring));
     }
@@ -24,7 +24,7 @@ public class BitModelTest {
     public void should_give_correct_fitness_prediction_from_middle_bit() {
 
         Bitstring bitstring = new Bitstring(8, "00001000");
-        BitModel bitModel = new BitModel(4, 1000);
+        BitModel bitModel = new BitModel(4, 1000, 0);
 
         assertEquals(1000, bitModel.getPredictedFitness(bitstring));
     }
@@ -33,7 +33,7 @@ public class BitModelTest {
     public void should_give_correct_inverse_fitness_prediction() {
 
         Bitstring bitstring = new Bitstring(8, "11111011");
-        BitModel bitModel = new BitModel(5, 1000);
+        BitModel bitModel = new BitModel(5, 1000, 0);
 
         assertEquals(-1000, bitModel.getPredictedFitness(bitstring));
     }
@@ -42,7 +42,7 @@ public class BitModelTest {
     public void should_give_correct_inverse_fitness_prediction_2() {
 
         Bitstring bitstring = new Bitstring(8, "11111011");
-        BitModel bitModel = new BitModel(5, -1000);
+        BitModel bitModel = new BitModel(5, -1000, 0);
 
         assertEquals(1000, bitModel.getPredictedFitness(bitstring));
     }

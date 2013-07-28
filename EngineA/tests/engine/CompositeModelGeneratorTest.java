@@ -34,13 +34,13 @@ public class CompositeModelGeneratorTest {
         final Random random = new Random();
         final List<Model> existingModels = new ArrayList<>();
 
-        existingModels.add(new BitModel(0, 1000));
+        existingModels.add(new BitModel(0, 1000, 0));
 
         CompositeModelGenerator compositeModelGenerator = new CompositeModelGenerator(random, 8, existingModels);
 
         assertTrue(compositeModelGenerator.canCreateModel()); // Method under test
 
-        CompositeModel compositeModel = compositeModelGenerator.generateRandomCompositeModel(); // Method under test
+        CompositeModel compositeModel = compositeModelGenerator.generateRandomCompositeModel(0); // Method under test
 
         assertEquals(1000, compositeModel.getPredictedFitness(new Bitstring(8, "10000000")));
     }
@@ -51,14 +51,14 @@ public class CompositeModelGeneratorTest {
         final Random random = new Random(0);
         final List<Model> existingModels = new ArrayList<>();
 
-        existingModels.add(new BitModel(0, 1000));
-        existingModels.add(new BitModel(0, 2000));
+        existingModels.add(new BitModel(0, 1000, 0));
+        existingModels.add(new BitModel(0, 2000, 0));
 
         CompositeModelGenerator compositeModelGenerator = new CompositeModelGenerator(random, 8, existingModels);
 
         assertTrue(compositeModelGenerator.canCreateModel()); // Method under test
 
-        CompositeModel compositeModel = compositeModelGenerator.generateRandomCompositeModel(); // Method under test
+        CompositeModel compositeModel = compositeModelGenerator.generateRandomCompositeModel(0); // Method under test
 
         int compositeModelPredictedFitness = compositeModel.getPredictedFitness(new Bitstring(8, "10000000"));
 
@@ -72,14 +72,14 @@ public class CompositeModelGeneratorTest {
         final Random random = new Random(25641);
         final List<Model> existingModels = new ArrayList<>();
 
-        existingModels.add(new BitModel(0, 1000));
-        existingModels.add(new BitModel(0, 2000));
+        existingModels.add(new BitModel(0, 1000, 0));
+        existingModels.add(new BitModel(0, 2000, 0));
 
         CompositeModelGenerator compositeModelGenerator = new CompositeModelGenerator(random, 8, existingModels);
 
         assertTrue(compositeModelGenerator.canCreateModel()); // Method under test
 
-        CompositeModel compositeModel = compositeModelGenerator.generateRandomCompositeModel(); // Method under test
+        CompositeModel compositeModel = compositeModelGenerator.generateRandomCompositeModel(0); // Method under test
 
         int compositeModelPredictedFitness = compositeModel.getPredictedFitness(new Bitstring(8, "10000000"));
 

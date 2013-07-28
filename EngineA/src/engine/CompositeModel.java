@@ -15,7 +15,9 @@ public class CompositeModel extends AbstractModel implements Model {
     private final List<Model> models;
     private final List<Integer> weightings;
 
-    public CompositeModel(List<Model> models, List<Integer> weightings) {
+    private int modelID;
+
+    public CompositeModel(List<Model> models, List<Integer> weightings, int modelID) {
 
         super();
 
@@ -28,6 +30,8 @@ public class CompositeModel extends AbstractModel implements Model {
 
         this.models = models;
         this.weightings = weightings;
+
+        this.modelID = modelID;
     }
 
     @Override
@@ -49,6 +53,11 @@ public class CompositeModel extends AbstractModel implements Model {
         assert fitness <= Integer.MAX_VALUE;
 
         return (int)fitness;
+    }
+
+    @Override
+    public int getID() {
+        return modelID;
     }
 
     @Override
